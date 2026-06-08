@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&display=swap');
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@keyframes scan {
+  0%, 100% { top: 0%; opacity: 0; }
+  50% { top: 100%; opacity: 1; }
+}
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Theme: Grey, White, Black (Minimalist/Elegant) */
+  --color-stone-50: #fafaf9;
+  --color-stone-100: #f5f5f4;
+  --color-stone-200: #e7e5e4;
+  --color-stone-300: #d6d3d1;
+  --color-stone-400: #a8a29e;
+  --color-stone-500: #78716c;
+  --color-stone-600: #57534e;
+  --color-stone-700: #44403c;
+  --color-stone-800: #292524;
+  --color-stone-900: #1c1917;
+  --color-stone-950: #0c0a09;
+  
+  /* Retain original functional colors */
+  --color-red-500: #ef4444;
+  --color-amber-500: #f59e0b;
+  --color-emerald-500: #10b981;
+  --color-blue-500: #3b82f6;
+  
+  --color-paving-red: #B22222;
+  --color-paving-yellow: #FFD700;
+}
+
+/* Global visual refinements */
+body {
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: default;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #fafaf9; /* stone-50 */
+}
+
+input, textarea, select {
+  -webkit-user-select: auto;
+  user-select: auto;
+  cursor: text;
+}
+
+button, a {
+  cursor: pointer;
+}
+
+/* Elegant card style - refined */
+@layer components {
+  .input-elegant, input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="file"]):not(.no-base-style), textarea:not(.no-base-style), select:not(.no-base-style) {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background-color: white;
+    border: 1px solid #e7e5e4;
+    border-radius: 0.75rem;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    font-size: 0.875rem;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.02);
+  }
+
+  .input-elegant:focus, input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="file"]):not(.no-base-style):focus, textarea:not(.no-base-style):focus, select:not(.no-base-style):focus {
+    border-color: #d6d3d1;
+    box-shadow: 0 0 0 4px rgba(28, 25, 23, 0.03); /* stone-900/5 */
+  }
+
+  .card-elegant {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.02);
+    transition: all 0.2s ease-in-out;
+  }
+
+  .card-elegant:hover {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+    border-color: rgba(0, 0, 0, 0.08);
+  }
+}
+
+button.bg-stone-900 {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-weight: 900;
+  font-size: 0.625rem !important; /* 10px */
+  border-radius: 1rem;
+  box-shadow: 0 10px 15px -3px rgba(28, 25, 23, 0.1), 0 4px 6px -4px rgba(28, 25, 23, 0.1);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button.bg-stone-900:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 20px 25px -5px rgba(28, 25, 23, 0.15), 0 8px 10px -6px rgba(28, 25, 23, 0.1);
+}
+
+button.bg-stone-900:active {
+  transform: translateY(1px);
+}
+
+/* Elegant Table Adjustments */
+table {
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+}
+
+thead tr {
+  background-color: #fafaf9; /* stone-50 */
+}
+
+th {
+  padding: 1rem 1.25rem !important;
+  font-size: 0.625rem; /* 10px */
+  font-weight: 900 !important;
+  color: #a8a29e; /* stone-400 */
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-bottom: 1px solid #e7e5e4; /* stone-200 */
+}
+
+td {
+  padding: 1rem 1.25rem;
+  vertical-align: middle;
+  border-bottom: 1px solid #f5f5f4; /* stone-100 */
+  font-size: 0.875rem; /* 14px */
+}
+
+tbody tr {
+  transition: all 0.2s ease;
+}
+
+tbody tr:hover {
+  background-color: #fafaf9; /* stone-50 */
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem;
+  text-align: center;
+  background-color: #fafaf9;
+  border: 1px dashed #d6d3d1;
+  border-radius: 1.5rem;
+  opacity: 0;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+.custom-scrollbar::-webkit-scrollbar,
+::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track,
+::-webkit-scrollbar-track {
+  background: transparent; 
+}
+.custom-scrollbar::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-thumb {
+  background: #e7e5e4; /* stone-200 */
+  border-radius: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover,
+::-webkit-scrollbar-thumb:hover {
+  background: #d6d3d1; /* stone-300 */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Print optimization */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 0mm;
+  }
+  body {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    background-color: white !important;
+  }
+  .print-header-group {
+    display: table-header-group;
+  }
+  .print-footer-group {
+    display: table-footer-group;
+  }
+  .break-inside-avoid {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .print-area {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 auto !important;
+    box-shadow: none !important;
+  }
+}
+
+
+

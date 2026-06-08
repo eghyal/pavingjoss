@@ -1,0 +1,8 @@
+{
+  "name": "Paving Joss ERP",
+  "description": "Comprehensive Operational ERP for engineering, procurement, and warehouse management. Built by Eghy Al Vandi.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

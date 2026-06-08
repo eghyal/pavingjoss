@@ -1,0 +1,21 @@
+{
+  "name": "Paving Joss - Solusi Paving Berkualitas",
+  "short_name": "Paving Joss",
+  "description": "Menyediakan Paving Blok, Batako, dan Material Konstruksi Terbaik untuk Proyek Anda.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#b02524",
+  "theme_color": "#b02524",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
